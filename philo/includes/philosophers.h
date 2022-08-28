@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:45:28 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/08/28 21:19:58 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/08/28 21:35:35 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@
 # include <sys/errno.h>
 
 # define ERR_WRG_NB_ARG			"Incorrect number of arguments"
+# define ERR_WRG_ARG		"Some arguments are incorrect"
 # define ERR_UNKNOWN			"Unknown error"
+
+# define INTMIN -2147483648
+# define INTMAX 2147483647
 
 typedef struct s_exec_data
 {
@@ -35,5 +39,8 @@ typedef struct s_exec_data
 
 int			ft_perror(char *str, int err);
 int			ft_perror_errno(void);
+
+int			get_input(const char *str);
+size_t		ft_strlen(char *str);
 
 #endif
