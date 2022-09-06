@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 13:44:19 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/08/29 23:57:12 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/06 21:36:23 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static void	init_exec_data(t_exec_data *exec_data, int argc, char const **argv)
 		|| exec_data->t_to_eat == -1 || exec_data->t_to_sleep == -1
 		|| exec_data->nb_of_dinners == -1)
 		exit(ft_perror(ERR_WRG_ARG, -1));
+	exec_data->init_timestamp = 0;
+	exec_data->init_timestamp = gettimestamp(*exec_data);
 }
 
 int	main(int argc, char const **argv)
