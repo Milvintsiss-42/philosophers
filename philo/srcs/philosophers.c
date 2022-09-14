@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: milvintsiss <milvintsiss@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 13:44:19 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/11 23:03:33 by milvintsiss      ###   ########.fr       */
+/*   Updated: 2022/09/15 00:20:55 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int	main(int argc, char const **argv)
 	t_exec_data	exec_data;
 
 	if (init_exec_data(&exec_data, argc, argv) == -1)
+		return (-1);
+	exec_data.forks = malloc(sizeof(pthread_mutex_t) * exec_data.nb_philo);
+	if (!exec_data.forks)
 		return (-1);
 	return (0);
 }
