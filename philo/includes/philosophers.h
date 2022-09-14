@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:45:28 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/15 00:21:10 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/15 01:13:59 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ typedef struct s_exec_data
 	int				t_to_sleep;
 	int				nb_of_dinners;
 	pthread_mutex_t	*forks;
+	int				err_no;
 }	t_exec_data;
 
-int			ft_perror(char *str, int err);
-int			ft_perror_errno(void);
+int			ft_perror(t_exec_data *exec_data, char *str, int err);
+int			ft_exit(t_exec_data *exec_data);
 
 long		gettimestamp(t_exec_data exec_data);
 void		log_action(t_exec_data exec_data, int philo_id, char *action);
