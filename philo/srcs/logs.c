@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 20:38:02 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/06 21:36:51 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/17 23:41:08 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ long	gettimestamp(t_exec_data exec_data)
 
 void	log_action(t_exec_data exec_data, int philo_id, char *action)
 {
-	printf("%ld %d %s\n", gettimestamp(exec_data), philo_id, action);
+	printf("%.8ld %d %s\n", gettimestamp(exec_data), philo_id, action);
 }
