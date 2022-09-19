@@ -6,7 +6,7 @@
 #    By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 15:36:23 by ple-stra          #+#    #+#              #
-#    Updated: 2022/09/04 20:52:48 by ple-stra         ###   ########.fr        #
+#    Updated: 2022/09/19 16:14:15 by ple-stra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ			= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 INC			= -I./includes -I./
 
 CC			= cc
-CFLAGS		= -Wall -Wextra
+CFLAGS		= -Wall -Wextra -pthread
 ifneq (nWerror, $(filter nWerror,$(MAKECMDGOALS)))
 	CFLAGS	+= -Werror
 endif
