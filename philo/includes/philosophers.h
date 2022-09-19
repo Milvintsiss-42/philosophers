@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:45:28 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/16 23:10:15 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/19 16:24:48 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,6 @@ void		log_action(t_exec_data exec_data, int philo_id, char *action);
 int			get_input(const char *str);
 size_t		ft_strlen(char *str);
 
+int			launch_philo_routines(t_exec_data *exec_data);
+int			wait_for_philo_routines(t_exec_data *exec_data);
 #endif
