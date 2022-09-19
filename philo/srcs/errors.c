@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:09:54 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/16 23:00:23 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/19 22:27:15 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	cleanup_mutexs(t_exec_data *exec_data)
 
 int	ft_exit(t_exec_data *exec_data)
 {
-	cleanup_mutexs(exec_data);
+	if (exec_data->forks)
+		cleanup_mutexs(exec_data);
 	free(exec_data->philos);
 	return (exec_data->err_no);
 }
