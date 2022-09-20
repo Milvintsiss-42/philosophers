@@ -6,13 +6,13 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:51:13 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/19 19:45:11 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:02:17 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-static void	eat(t_philo *philo)
+static int	eat(t_philo *philo)
 {
 	int	right_fork;
 	int	left_fork;
@@ -26,13 +26,16 @@ static void	eat(t_philo *philo)
 		+ (philo->id % 2 == 0) * left_fork;
 	second_fork = (philo->id % 2 == 0) * right_fork
 		+ (philo->id % 2 == 1) * left_fork;
-	pthread_mutex_lock(&philo->exec_data->forks[first_fork]);
+	if (pthread_mutex_lock(&philo->exec_data->forks[first_fork]) != 0)
+		return (ft_perror(philo->exec_data, ERR_UNKNOWN, 7));
 	log_action(*philo->exec_data, philo->id, ACT_TAKE_FORK);
-	pthread_mutex_lock(&philo->exec_data->forks[second_fork]);
+	if (pthread_mutex_lock(&philo->exec_data->forks[second_fork]) != 0)
+		return (ft_perror(philo->exec_data, ERR_UNKNOWN, 7));
 	log_action(*philo->exec_data, philo->id, ACT_TAKE_FORK);
 	log_action(*philo->exec_data, philo->id, ACT_IS_EATING);
 	pthread_mutex_unlock(&philo->exec_data->forks[first_fork]);
 	pthread_mutex_unlock(&philo->exec_data->forks[second_fork]);
+	return (1);
 }
 
 static void	*philo_routine(void *arg)
@@ -43,7 +46,8 @@ static void	*philo_routine(void *arg)
 	log_action(*philo->exec_data, philo->id, ACT_IS_BORN);
 	while (1)
 	{
-		eat(philo);
+		if (!eat(philo))
+			return (NULL);
 	}
 	return (NULL);
 }
