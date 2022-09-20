@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:51:13 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/20 17:10:15 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:32:12 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,6 @@ int	wait_for_philo_routines(t_exec_data *exec_data)
 
 	i = -1;
 	while (++i < exec_data->nb_philo)
-	{
 		pthread_join(exec_data->philos[i].thread, NULL);
-		i++;
-	}
 	return (0);
 }
