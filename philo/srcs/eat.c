@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:25:06 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/20 15:32:07 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:35:08 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	eat(t_philo *philo)
 		return (ft_perror(philo->exec_data, ERR_UNKNOWN, 7));
 	take_fork_action(*philo, second_fork == right_fork);
 	log_action(*philo->exec_data, philo->id, ACT_IS_EATING);
+	usleep(philo->exec_data->t_to_eat);
 	pthread_mutex_unlock(&philo->exec_data->forks[first_fork]);
 	pthread_mutex_unlock(&philo->exec_data->forks[second_fork]);
 	return (1);
