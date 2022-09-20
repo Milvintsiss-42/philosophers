@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:51:13 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/20 17:45:02 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/20 19:52:09 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	launch_philo_routines(t_exec_data *exec_data)
 		exec_data->philos[i].id = i;
 		exec_data->philos[i].exec_data = exec_data;
 		exec_data->philos[i].nb_of_dinners_eat = 0;
+		exec_data->philos[i].t_last_meal = 0;
 		if (pthread_create(&exec_data->philos[i].thread,
 				NULL, &philo_routine, &exec_data->philos[i])
 			!= 0)

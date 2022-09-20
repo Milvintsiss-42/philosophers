@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 13:44:19 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/20 15:33:45 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:12:39 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	init_exec_data(t_exec_data *exec_data, int argc, char const **argv)
 {
 	exec_data->err_no = 0;
+	exec_data->one_philo_died = 0;
 	exec_data->forks = 0;
 	exec_data->philos = 0;
 	if (argc < 5 || argc > 6)

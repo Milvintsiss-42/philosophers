@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:45:28 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/20 17:44:42 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:12:13 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_exec_data
 	int				t_to_eat;
 	int				t_to_sleep;
 	int				nb_of_dinners;
+	int				one_philo_died;
 	struct s_philo	*philos;
 	pthread_mutex_t	*forks;
 	int				err_no;
@@ -53,6 +54,7 @@ typedef struct s_exec_data
 typedef struct s_philo
 {
 	int			id;
+	long		t_last_meal;
 	int			nb_of_dinners_eat;
 	pthread_t	thread;
 	t_exec_data	*exec_data;
