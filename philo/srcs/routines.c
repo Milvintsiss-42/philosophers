@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:51:13 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/20 17:32:12 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:45:02 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ static void	*philo_routine(void *arg)
 	{
 		if (philo->nb_of_dinners_eat == philo->exec_data->nb_of_dinners)
 			return (NULL);
-		think(*philo);
 		if (!eat(philo))
 			return (NULL);
+		p_sleep(*philo);
+		think(*philo);
 	}
 	return (NULL);
 }
