@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:45:28 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/19 16:24:48 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:23:06 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@
 # define ERR_WRG_ARG			"Some arguments are incorrect"
 # define ERR_UNKNOWN			"Unknown error"
 
-# define ACT_IS_BORN		"is born"
-# define ACT_TAKE_FORK		"has taken a fork"
-# define ACT_IS_EATING		"is eating"
-# define ACT_IS_SLEEPING	"is sleeping"
-# define ACT_IS_THINKING	"is thinking"
-# define ACT_DIED			"died"	
+# define ACT_IS_BORN			"is born"
+# define ACT_TAKE_RIGHT_FORK	"has taken the fork at his right"
+# define ACT_TAKE_LEFT_FORK		"has taken the fork at his left"
+# define ACT_IS_EATING			"is eating"
+# define ACT_IS_SLEEPING		"is sleeping"
+# define ACT_IS_THINKING		"is thinking"
+# define ACT_DIED				"died"
 
 # define INTMIN -2147483648
 # define INTMAX 2147483647

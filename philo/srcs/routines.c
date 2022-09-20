@@ -6,11 +6,19 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:51:13 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/20 15:02:17 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:21:44 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+static void	take_fork_action(t_philo philo, int is_right)
+{
+	if (is_right)
+		log_action(*philo.exec_data, philo.id, ACT_TAKE_RIGHT_FORK);
+	else
+		log_action(*philo.exec_data, philo.id, ACT_TAKE_LEFT_FORK);
+}
 
 static int	eat(t_philo *philo)
 {
@@ -28,10 +36,10 @@ static int	eat(t_philo *philo)
 		+ (philo->id % 2 == 1) * left_fork;
 	if (pthread_mutex_lock(&philo->exec_data->forks[first_fork]) != 0)
 		return (ft_perror(philo->exec_data, ERR_UNKNOWN, 7));
-	log_action(*philo->exec_data, philo->id, ACT_TAKE_FORK);
+	take_fork_action(*philo, first_fork == right_fork);
 	if (pthread_mutex_lock(&philo->exec_data->forks[second_fork]) != 0)
 		return (ft_perror(philo->exec_data, ERR_UNKNOWN, 7));
-	log_action(*philo->exec_data, philo->id, ACT_TAKE_FORK);
+	take_fork_action(*philo, second_fork == right_fork);
 	log_action(*philo->exec_data, philo->id, ACT_IS_EATING);
 	pthread_mutex_unlock(&philo->exec_data->forks[first_fork]);
 	pthread_mutex_unlock(&philo->exec_data->forks[second_fork]);
