@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:25:06 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/20 15:35:08 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:39:33 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ int	eat(t_philo *philo)
 	usleep(philo->exec_data->t_to_eat);
 	pthread_mutex_unlock(&philo->exec_data->forks[first_fork]);
 	pthread_mutex_unlock(&philo->exec_data->forks[second_fork]);
+	philo->nb_of_dinners_eat++;
 	return (1);
 }

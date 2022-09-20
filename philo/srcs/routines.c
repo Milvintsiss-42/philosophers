@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:51:13 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/20 15:29:26 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:42:30 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	*philo_routine(void *arg)
 	log_action(*philo->exec_data, philo->id, ACT_IS_BORN);
 	while (1)
 	{
+		if (philo->nb_of_dinners_eat == philo->exec_data->nb_of_dinners)
+			return (NULL);
 		if (!eat(philo))
 			return (NULL);
 		think(*philo);
@@ -39,6 +41,7 @@ int	launch_philo_routines(t_exec_data *exec_data)
 	{
 		exec_data->philos[i].id = i;
 		exec_data->philos[i].exec_data = exec_data;
+		exec_data->philos[i].nb_of_dinners_eat = 0;
 		if (pthread_create(&exec_data->philos[i].thread,
 				NULL, &philo_routine, &exec_data->philos[i])
 			!= 0)
