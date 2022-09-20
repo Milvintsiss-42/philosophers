@@ -6,7 +6,7 @@
 #    By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 15:36:23 by ple-stra          #+#    #+#              #
-#    Updated: 2022/09/19 16:14:53 by ple-stra         ###   ########.fr        #
+#    Updated: 2022/09/20 15:25:44 by ple-stra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		= philosophers
 
 SRCS_DIR	= srcs
 SRCS		= philosophers.c\
- routines.c\
+ routines.c eat.c\
  basic_utils.c errors.c logs.c
 BUILD_DIR	= build
 OBJ_DIR		= $(BUILD_DIR)/objs

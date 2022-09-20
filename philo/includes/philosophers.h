@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:45:28 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/20 15:23:06 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:25:34 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,6 @@ size_t		ft_strlen(char *str);
 
 int			launch_philo_routines(t_exec_data *exec_data);
 int			wait_for_philo_routines(t_exec_data *exec_data);
+
+int			eat(t_philo *philo);
 #endif
