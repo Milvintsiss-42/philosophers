@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:25:06 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/21 16:22:42 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:06:22 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	take_dinner_and_release_forks(t_philo *philo,
 		return (died_or_stop(philo));
 	philo->t_last_meal = gettimestamp(*philo->exec_data);
 	log_action(*philo->exec_data, philo->id, ACT_IS_EATING);
-	usleep(philo->exec_data->t_to_eat);
+	usleep(philo->exec_data->t_to_eat * 1000);
 	if (is_dead_or_stop(philo))
 		return (died_or_stop(philo));
 	pthread_mutex_unlock(&philo->exec_data->forks[first_fork]);
