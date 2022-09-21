@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:09:54 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/19 22:27:15 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:47:16 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	cleanup_mutexs(t_exec_data *exec_data)
 	i = -1;
 	while (++i < exec_data->nb_philo)
 		pthread_mutex_destroy(&exec_data->forks[i]);
+	pthread_mutex_destroy(&exec_data->mutex_one_philo_died);
 	free(exec_data->forks);
 }
 

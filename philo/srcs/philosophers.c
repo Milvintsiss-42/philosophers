@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 13:44:19 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/20 20:12:39 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:44:28 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	init_mutexs(t_exec_data *exec_data)
 	while (++i < exec_data->nb_philo)
 		if (pthread_mutex_init(&exec_data->forks[i], NULL) != 0)
 			return (ft_perror(exec_data, ERR_UNKNOWN, 5));
+	if (pthread_mutex_init(&exec_data->mutex_one_philo_died, NULL) != 0)
+		return (ft_perror(exec_data, ERR_UNKNOWN, 8));
 	return (1);
 }
 
