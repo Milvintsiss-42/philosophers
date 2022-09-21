@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:51:13 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/21 18:17:33 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/21 20:31:23 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	log_action(*philo->exec_data, philo->id, ACT_IS_BORN);
+	if (KDEBUG)
+		log_action(*philo->exec_data, philo->id, ACT_IS_BORN);
 	while (1)
 	{
 		if (philo->nb_of_dinners_eat == philo->exec_data->nb_of_dinners)

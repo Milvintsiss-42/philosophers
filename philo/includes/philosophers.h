@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:45:28 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/21 18:17:23 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/21 20:33:49 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,22 @@
 # include <pthread.h>
 # include <sys/errno.h>
 
+# ifndef KDEBUG
+#  define KDEBUG 0
+# endif
+
 # define ERR_WRG_NB_ARG			"Incorrect number of arguments"
 # define ERR_WRG_ARG			"Some arguments are incorrect"
 # define ERR_UNKNOWN			"Unknown error"
 
 # define ACT_IS_BORN			"is born"
-# define ACT_TAKE_RIGHT_FORK	"has taken the fork at his right"
-# define ACT_TAKE_LEFT_FORK		"has taken the fork at his left"
+# if KDEBUG == 1
+#  define ACT_TAKE_RIGHT_FORK	"has taken the fork at his right"
+#  define ACT_TAKE_LEFT_FORK	"has taken the fork at his left"
+# else
+#  define ACT_TAKE_RIGHT_FORK	"has taken a fork"
+#  define ACT_TAKE_LEFT_FORK	"has taken a fork"
+# endif
 # define ACT_IS_EATING			"is eating"
 # define ACT_IS_SLEEPING		"is sleeping"
 # define ACT_IS_THINKING		"is thinking"
