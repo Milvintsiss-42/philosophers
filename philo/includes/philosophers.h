@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:45:28 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/21 15:50:46 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:17:23 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int			launch_philo_routines(t_exec_data *exec_data);
 int			wait_for_philo_routines(t_exec_data *exec_data);
 
 int			eat(t_philo *philo);
-void		p_sleep(t_philo philo);
+int			p_sleep(t_philo *philo);
 void		think(t_philo philo);
 
 int			is_dead_or_stop(t_philo *philo);
