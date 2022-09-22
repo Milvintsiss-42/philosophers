@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:51:13 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/22 14:14:05 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/22 15:02:28 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 static void	*philo_routine(void *arg)
 {
 	t_philo	*philo;
+	int		first_fork;
+	int		second_fork;
 
 	philo = (t_philo *)arg;
 	if (KDEBUG)
@@ -23,9 +25,9 @@ static void	*philo_routine(void *arg)
 	{
 		if (philo->nb_of_dinners_eat == philo->exec_data->nb_of_dinners)
 			return (NULL);
-		if (!eat(philo))
+		if (!eat(philo, &first_fork, &second_fork))
 			return (NULL);
-		if (!p_sleep(philo))
+		if (!p_sleep(philo, first_fork, second_fork))
 			return (NULL);
 		if (!think(philo))
 			return (NULL);

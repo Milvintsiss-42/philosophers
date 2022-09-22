@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:45:28 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/22 14:12:20 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/22 15:01:03 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,9 @@ size_t		ft_strlen(char *str);
 int			launch_philo_routines(t_exec_data *exec_data);
 int			wait_for_philo_routines(t_exec_data *exec_data);
 
-int			eat(t_philo *philo);
-int			p_sleep(t_philo *philo);
+void		release_forks(t_philo *philo, int first_fork, int second_fork);
+int			eat(t_philo *philo, int *first_fork, int *second_fork);
+int			p_sleep(t_philo *philo, int first_fork, int second_fork);
 int			think(t_philo *philo);
 
 int			is_dead_or_stop(t_philo *philo);
