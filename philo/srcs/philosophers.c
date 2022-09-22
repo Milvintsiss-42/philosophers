@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 13:44:19 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/21 18:08:10 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/22 14:11:07 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ static int	init_exec_data(t_exec_data *exec_data, int argc, char const **argv)
 		|| exec_data->t_to_eat * 1000 < 0 || exec_data->t_to_sleep * 1000 < 0
 		|| exec_data->nb_of_dinners == -1)
 		return (ft_perror(exec_data, ERR_WRG_ARG, 3));
+	exec_data->t_to_think = 1;
+	if (exec_data->t_to_eat > exec_data->t_to_sleep)
+		exec_data->t_to_think += exec_data->t_to_eat - exec_data->t_to_sleep;
 	exec_data->init_timestamp = 0;
 	exec_data->init_timestamp = gettimestamp(*exec_data);
 	return (1);

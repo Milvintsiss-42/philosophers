@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:45:28 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/21 20:33:49 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/22 14:12:20 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_exec_data
 	int				t_to_die;
 	int				t_to_eat;
 	int				t_to_sleep;
+	int				t_to_think;
 	int				nb_of_dinners;
 	int				one_philo_died;
 	pthread_mutex_t	mutex_one_philo_died;
@@ -84,7 +85,7 @@ int			wait_for_philo_routines(t_exec_data *exec_data);
 
 int			eat(t_philo *philo);
 int			p_sleep(t_philo *philo);
-void		think(t_philo philo);
+int			think(t_philo *philo);
 
 int			is_dead_or_stop(t_philo *philo);
 int			died_or_stop(t_philo *philo);

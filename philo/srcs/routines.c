@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:51:13 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/21 20:31:23 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/22 14:14:05 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void	*philo_routine(void *arg)
 			return (NULL);
 		if (!p_sleep(philo))
 			return (NULL);
-		think(*philo);
+		if (!think(philo))
+			return (NULL);
 	}
 	return (NULL);
 }
