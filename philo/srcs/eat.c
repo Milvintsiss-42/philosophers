@@ -6,19 +6,11 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:25:06 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/21 18:37:39 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/22 14:44:14 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-static void	take_fork_action(t_philo philo, int is_right)
-{
-	if (is_right)
-		log_action(*philo.exec_data, philo.id, ACT_TAKE_RIGHT_FORK);
-	else
-		log_action(*philo.exec_data, philo.id, ACT_TAKE_LEFT_FORK);
-}
 
 static int	take_fork(t_philo *philo, int fork_id, int is_right)
 {
@@ -26,7 +18,10 @@ static int	take_fork(t_philo *philo, int fork_id, int is_right)
 		return (died_or_stop(philo));
 	if (pthread_mutex_lock(&philo->exec_data->forks[fork_id]) != 0)
 		return (ft_perror(philo->exec_data, ERR_UNKNOWN, 7));
-	take_fork_action(*philo, is_right);
+	if (is_right)
+		log_action(*philo->exec_data, philo->id, ACT_TAKE_RIGHT_FORK);
+	else
+		log_action(*philo->exec_data, philo->id, ACT_TAKE_LEFT_FORK);
 	return (1);
 }
 
@@ -34,6 +29,17 @@ static void	release_forks(t_philo *philo, int first_fork, int second_fork)
 {
 	pthread_mutex_unlock(&philo->exec_data->forks[first_fork]);
 	pthread_mutex_unlock(&philo->exec_data->forks[second_fork]);
+}
+
+static int	no_more_fork(t_philo *philo, int first_fork, int second_fork)
+{
+	release_forks(philo, first_fork, second_fork);
+	while (1)
+	{
+		if (is_dead_or_stop(philo))
+			return (died_or_stop(philo));
+	}
+	return (0);
 }
 
 static int	take_dinner_and_release_forks(t_philo *philo,
@@ -70,6 +76,8 @@ int	eat(t_philo *philo)
 		+ (philo->id % 2 == 1) * left_fork;
 	if (!take_fork(philo, first_fork, first_fork == right_fork))
 		return (0);
+	if (philo->exec_data->nb_philo < 2)
+		return (no_more_fork(philo, first_fork, second_fork));
 	if (!take_fork(philo, second_fork, second_fork == right_fork))
 	{
 		release_forks(philo, first_fork, second_fork);
