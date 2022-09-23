@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 13:44:19 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/22 15:43:10 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/23 18:53:50 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	main(int argc, char const **argv)
 	if (!init_mutexs(&exec_data))
 		return (ft_exit(&exec_data));
 	if (!launch_philo_routines(&exec_data))
+		return (ft_exit(&exec_data));
+	if (!monitoring(&exec_data))
 		return (ft_exit(&exec_data));
 	if (!wait_for_philo_routines(&exec_data))
 		return (ft_exit(&exec_data));
