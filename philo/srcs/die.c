@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:09:08 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/22 14:40:22 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/23 18:43:49 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ int	is_dead_or_stop(t_philo *philo)
 
 int	died_or_stop(t_philo *philo)
 {
-	if (philo->exec_data->err_no != 0)
-		return (0);
 	if (gettimestamp(*philo->exec_data) - philo->t_last_meal
-		> philo->exec_data->t_to_die)
+		> philo->exec_data->t_to_die
+		|| philo->exec_data->err_no != 0)
 	{
 		if (pthread_mutex_lock(&philo->exec_data->mutex_one_philo_died) != 0)
 			return (ft_perror(philo->exec_data, ERR_UNKNOWN, 9));
 		philo->exec_data->one_philo_died = 1;
 		pthread_mutex_unlock(&philo->exec_data->mutex_one_philo_died);
-		log_action(*philo->exec_data, philo->id, ACT_DIED);
+		if (philo->exec_data->err_no == 0)
+			log_action(*philo->exec_data, philo->id, ACT_DIED);
 		return (0);
 	}
 	if (pthread_mutex_lock(&philo->exec_data->mutex_one_philo_died) != 0)
