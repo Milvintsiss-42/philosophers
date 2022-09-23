@@ -6,11 +6,24 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:51:13 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/23 21:36:14 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/24 00:52:55 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+static int	has_eat_enough_or_error(t_philo *philo)
+{
+	if (pthread_mutex_lock(&philo->mutex_nb_of_dinners_eat) != 0)
+		return (ft_perror(philo->exec_data, ERR_UNKNOWN, 12), 1);
+	if (philo->nb_of_dinners_eat == philo->exec_data->nb_of_dinners)
+	{
+		pthread_mutex_unlock(&philo->mutex_nb_of_dinners_eat);
+		return (1);
+	}
+	pthread_mutex_unlock(&philo->mutex_nb_of_dinners_eat);
+	return (0);
+}
 
 static void	*philo_routine(void *arg)
 {
@@ -29,7 +42,7 @@ static void	*philo_routine(void *arg)
 		usleep(pre_slip_time);
 	while (1)
 	{
-		if (philo->nb_of_dinners_eat == philo->exec_data->nb_of_dinners)
+		if (has_eat_enough_or_error(philo))
 			return (NULL);
 		if (!eat(philo, &first_fork, &second_fork))
 			return (NULL);
@@ -55,6 +68,9 @@ int	launch_philo_routines(t_exec_data *exec_data)
 		exec_data->philos[i].exec_data = exec_data;
 		exec_data->philos[i].nb_of_dinners_eat = 0;
 		exec_data->philos[i].t_last_meal = 0;
+		if (pthread_mutex_init(
+				&exec_data->philos[i].mutex_nb_of_dinners_eat, NULL) != 0)
+			return (ft_perror(exec_data, ERR_UNKNOWN, 11));
 		if (pthread_create(&exec_data->philos[i].thread,
 				NULL, &philo_routine, &exec_data->philos[i])
 			!= 0)

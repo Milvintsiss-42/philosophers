@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:25:06 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/23 22:47:28 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/23 23:39:13 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ static int	take_dinner_and_release_forks(t_philo *philo,
 		release_forks(philo, first_fork, second_fork);
 		return (died_or_stop(philo));
 	}
+	if (pthread_mutex_lock(&philo->mutex_nb_of_dinners_eat) != 0)
+		return (ft_perror(philo->exec_data, ERR_UNKNOWN, 12));
 	philo->nb_of_dinners_eat++;
+	pthread_mutex_unlock(&philo->mutex_nb_of_dinners_eat);
 	return (1);
 }
 

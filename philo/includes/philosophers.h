@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:45:28 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/23 22:36:21 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/23 23:14:46 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,12 @@ typedef struct s_exec_data
 
 typedef struct s_philo
 {
-	int			id;
-	long		t_last_meal;
-	int			nb_of_dinners_eat;
-	pthread_t	thread;
-	t_exec_data	*exec_data;
+	int				id;
+	long			t_last_meal;
+	int				nb_of_dinners_eat;
+	pthread_mutex_t	mutex_nb_of_dinners_eat;
+	pthread_t		thread;
+	t_exec_data		*exec_data;
 }	t_philo;
 
 int			ft_perror(t_exec_data *exec_data, char *str, int err);
