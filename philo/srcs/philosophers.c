@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 13:44:19 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/23 18:53:50 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/23 19:20:15 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static int	init_exec_data(t_exec_data *exec_data, int argc, char const **argv)
 {
 	exec_data->err_no = 0;
 	exec_data->one_philo_died = 0;
+	exec_data->die_has_been_logged = 0;
 	exec_data->forks = 0;
 	exec_data->philos = 0;
 	if (argc < 5 || argc > 6)
@@ -62,6 +63,8 @@ static int	init_mutexs(t_exec_data *exec_data)
 			return (ft_perror(exec_data, ERR_UNKNOWN, 5));
 	if (pthread_mutex_init(&exec_data->mutex_one_philo_died, NULL) != 0)
 		return (ft_perror(exec_data, ERR_UNKNOWN, 8));
+	if (pthread_mutex_init(&exec_data->mutex_die_has_been_logged, NULL) != 0)
+		return (ft_perror(exec_data, ERR_UNKNOWN, 11));
 	return (1);
 }
 

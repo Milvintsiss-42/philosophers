@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:45:28 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/23 18:54:15 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/23 19:13:22 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ typedef struct s_exec_data
 	int				t_to_think;
 	int				nb_of_dinners;
 	int				one_philo_died;
+	int				die_has_been_logged;
 	pthread_mutex_t	mutex_one_philo_died;
+	pthread_mutex_t	mutex_die_has_been_logged;
 	struct s_philo	*philos;
 	pthread_mutex_t	*forks;
 	int				err_no;
