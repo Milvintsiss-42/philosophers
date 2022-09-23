@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:25:06 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/22 16:02:10 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:47:28 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static int	take_fork(t_philo *philo, int fork_id, int is_right)
 		return (died_or_stop(philo));
 	if (pthread_mutex_lock(&philo->exec_data->forks[fork_id]) != 0)
 		return (ft_perror(philo->exec_data, ERR_UNKNOWN, 7));
+	if (is_dead_or_stop(philo))
+		return (died_or_stop(philo));
 	if (is_right)
 		log_action(*philo->exec_data, philo->id, ACT_TAKE_RIGHT_FORK);
 	else
@@ -75,7 +77,10 @@ int	eat(t_philo *philo, int *first_fork, int *second_fork)
 	*second_fork = (philo->id % 2 == 0) * right_fork
 		+ (philo->id % 2 == 1) * left_fork;
 	if (!take_fork(philo, *first_fork, *first_fork == right_fork))
+	{
+		release_forks(philo, *first_fork, *second_fork);
 		return (0);
+	}
 	if (philo->exec_data->nb_philo < 2)
 		return (no_more_fork(philo, *first_fork, *second_fork));
 	if (!take_fork(philo, *second_fork, *second_fork == right_fork))

@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:39:42 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/23 18:53:29 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:39:09 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	monitoring(t_exec_data *exec_data)
 					return (ft_perror(exec_data, ERR_UNKNOWN, 9));
 				exec_data->one_philo_died = 1;
 				pthread_mutex_unlock(&exec_data->mutex_one_philo_died);
+				log_action(*exec_data, exec_data->philos[i].id, ACT_DIED);
 				return (1);
 			}
 		}
