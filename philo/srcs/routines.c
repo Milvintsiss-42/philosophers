@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:51:13 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/22 16:25:03 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/23 21:36:14 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,16 @@ static void	*philo_routine(void *arg)
 	t_philo	*philo;
 	int		first_fork;
 	int		second_fork;
+	int		pre_slip_time;
 
 	philo = (t_philo *)arg;
 	if (KDEBUG)
 		log_action(*philo->exec_data, philo->id, ACT_IS_BORN);
+	pre_slip_time = 50000;
+	if (philo->exec_data->t_to_eat < 50)
+		pre_slip_time = philo->exec_data->t_to_eat;
 	if (philo->id % 2 == 0)
-		usleep(50000);
+		usleep(pre_slip_time);
 	while (1)
 	{
 		if (philo->nb_of_dinners_eat == philo->exec_data->nb_of_dinners)
