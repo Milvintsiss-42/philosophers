@@ -6,11 +6,11 @@
 #    By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 15:36:23 by ple-stra          #+#    #+#              #
-#    Updated: 2022/09/23 18:54:43 by ple-stra         ###   ########.fr        #
+#    Updated: 2022/09/23 22:19:41 by ple-stra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= philosophers
+NAME		= philo
 
 SRCS_DIR	= srcs
 SRCS		= philosophers.c\
