@@ -6,15 +6,23 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:24:03 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/24 15:24:09 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/09/26 23:53:31 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers_bonus.h"
 
+int	philo_proccess(t_philo *philo)
+{
+	if (KDEBUG)
+		log_action(*philo, ACT_IS_BORN);
+	return (1);
+}
+
 int	launch_philo_processes(t_exec_data *exec_data)
 {
 	int	i;
+	int	pid;
 
 	exec_data->philos = malloc(sizeof(t_philo) * exec_data->nb_philo);
 	if (!exec_data->philos)
@@ -23,10 +31,17 @@ int	launch_philo_processes(t_exec_data *exec_data)
 	while (++i < exec_data->nb_philo)
 	{
 		exec_data->philos[i].id = i;
+		exec_data->philos[i].pid = 0;
 		exec_data->philos[i].exec_data = exec_data;
 		exec_data->philos[i].nb_of_dinners_eat = 0;
 		exec_data->philos[i].t_last_meal = 0;
-		// TODO: Create process
+		pid = fork();
+		if (pid == -1)
+			return (ft_perror(exec_data, ERR_UNKNOWN, 7));
+		if (pid == 0)
+			return (philo_proccess(&exec_data->philos[i]));
+		if (pid != 0)
+			exec_data->philos[i].pid = pid;
 	}
 	return (1);
 }
