@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:24:03 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/26 23:53:31 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/10/09 23:33:49 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	philo_proccess(t_philo *philo)
 {
 	if (KDEBUG)
 		log_action(*philo, ACT_IS_BORN);
-	return (1);
+	return (0);
 }
 
 int	launch_philo_processes(t_exec_data *exec_data)
@@ -53,6 +53,7 @@ int	wait_for_philo_processes(t_exec_data *exec_data)
 
 	i = -1;
 	while (++i < exec_data->nb_philo)
-		; // TODO: wait for processes
-	return (0);
+		if (waitpid(exec_data->philos[i].pid, NULL, 0) == -1)
+			return (ft_perror(exec_data, ERR_UNKNOWN, 8));
+	return (1);
 }
