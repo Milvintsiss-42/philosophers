@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:24:03 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/10/09 23:40:29 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:57:38 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	launch_philo_processes(t_exec_data *exec_data)
 	return (1);
 }
 
-// TODO
 int	wait_for_philo_processes(t_exec_data *exec_data)
 {
 	int	i;
