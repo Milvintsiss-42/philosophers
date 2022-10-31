@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 14:59:10 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/10/13 18:54:46 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/10/31 18:00:30 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <sys/wait.h>
+# include <semaphore.h>
 
 # ifndef KDEBUG
 #  define KDEBUG 0
@@ -28,9 +29,10 @@
 # define ERR_WRG_ARG			"Some arguments are incorrect"
 # define ERR_UNKNOWN			"Unknown error"
 
+# define SEM_FORKS_NAME			"/forks"
+
 # define ACT_IS_BORN			"is born"
-# define ACT_TAKE_RIGHT_FORK	"has taken a fork"
-# define ACT_TAKE_LEFT_FORK		"has taken a fork"
+# define ACT_TAKE_FORK			"has taken a fork"
 # define ACT_IS_EATING			"is eating"
 # define ACT_IS_SLEEPING		"is sleeping"
 # define ACT_IS_THINKING		"is thinking"
@@ -50,6 +52,7 @@ typedef struct s_exec_data
 	int				t_to_think;
 	int				nb_of_dinners;
 	struct s_philo	*philos;
+	sem_t			*forks;
 	int				err_no;
 }	t_exec_data;
 
@@ -73,5 +76,7 @@ size_t		ft_strlen(char *str);
 
 int			launch_philo_processes(t_exec_data *exec_data);
 int			wait_for_philo_processes(t_exec_data *exec_data);
+
+int			eat(t_philo *philo);
 
 #endif

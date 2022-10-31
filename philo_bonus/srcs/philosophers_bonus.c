@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 13:47:36 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/24 15:21:00 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/10/31 17:57:38 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static int	init_exec_data(t_exec_data *exec_data, int argc, char const **argv)
 {
 	exec_data->err_no = 0;
 	exec_data->philos = 0;
+	exec_data->forks = 0;
 	if (argc < 5 || argc > 6)
 		return (ft_perror(exec_data, ERR_WRG_NB_ARG, 2));
 	parse_input(exec_data, argc, argv);
@@ -47,11 +48,25 @@ static int	init_exec_data(t_exec_data *exec_data, int argc, char const **argv)
 	return (1);
 }
 
+static int	create_semaphore(t_exec_data *exec_data)
+{
+	exec_data->forks = sem_open(SEM_FORKS_NAME,
+			O_CREAT | O_EXCL, 0644, exec_data->nb_philo);
+	if (exec_data->forks == SEM_FAILED)
+	{
+		sem_unlink(SEM_FORKS_NAME);
+		return (ft_perror(exec_data, ERR_UNKNOWN, 7));
+	}
+	return (1);
+}
+
 int	main(int argc, char const **argv)
 {
 	t_exec_data	exec_data;
 
 	if (!init_exec_data(&exec_data, argc, argv))
+		return (ft_exit(&exec_data));
+	if (!create_semaphore(&exec_data))
 		return (ft_exit(&exec_data));
 	if (!launch_philo_processes(&exec_data))
 		return (ft_exit(&exec_data));

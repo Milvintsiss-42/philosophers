@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:24:03 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/10/13 18:57:38 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/10/31 16:54:22 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ int	philo_proccess(t_philo *philo)
 {
 	if (KDEBUG)
 		log_action(*philo, ACT_IS_BORN);
+	while (1)
+	{
+		eat(philo);
+	}
 	return (0);
 }
 
