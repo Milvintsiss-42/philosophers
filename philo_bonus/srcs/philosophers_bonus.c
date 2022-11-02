@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 13:47:36 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/10/31 17:57:38 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/02 17:46:36 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ static int	create_semaphore(t_exec_data *exec_data)
 	if (exec_data->forks == SEM_FAILED)
 	{
 		sem_unlink(SEM_FORKS_NAME);
-		return (ft_perror(exec_data, ERR_UNKNOWN, 7));
+		exec_data->forks = sem_open(SEM_FORKS_NAME,
+				O_CREAT | O_EXCL, 0644, exec_data->nb_philo);
+		if (exec_data->forks == SEM_FAILED)
+			return (ft_perror(exec_data, ERR_UNKNOWN, 7));
 	}
 	return (1);
 }
