@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 14:59:10 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/10/31 18:00:30 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:08:34 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <sys/wait.h>
+# include <fcntl.h>
 # include <semaphore.h>
 
 # ifndef KDEBUG
