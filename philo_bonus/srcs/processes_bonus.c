@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:24:03 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/10/31 16:54:22 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 00:35:54 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,20 @@
 
 int	philo_proccess(t_philo *philo)
 {
+	int	is_first_iteration;
+
+	is_first_iteration = 1;
 	if (KDEBUG)
 		log_action(*philo, ACT_IS_BORN);
+	if (philo->id % 2)
+		usleep(philo->exec_data->t_to_eat * 1000 - 1000);
 	while (1)
 	{
+		if (!is_first_iteration)
+			while (gettimestamp(*philo->exec_data) - philo->t_last_meal
+				< philo->exec_data->t_to_die * 2 / 3)
+				;
+		is_first_iteration = 0;
 		eat(philo);
 	}
 	return (0);
