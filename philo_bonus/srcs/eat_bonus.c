@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:25:06 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 18:15:46 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 19:48:54 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	release_forks(t_philo *philo, int nb)
 		sem_post(philo->exec_data->forks);
 }
 
-int	eat(t_philo *philo)
+int	eat_action(t_philo *philo)
 {
 	if (!take_fork(philo))
 		exit(ft_exit(philo->exec_data));

@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:24:03 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 18:19:48 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 19:48:55 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	philo_proccess(t_philo *philo)
 				< philo->exec_data->t_to_die * 2 / 3)
 				die_if_have_to(philo, 0);
 		is_first_iteration = 0;
-		eat(philo);
+		eat_action(philo);
 	}
 	return (0);
 }

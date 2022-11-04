@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 14:59:10 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 18:12:22 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 19:48:57 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ size_t		ft_strlen(char *str);
 int			launch_philo_processes(t_exec_data *exec_data);
 void		monitoring(t_exec_data *exec_data);
 
-int			eat(t_philo *philo);
+int			eat_action(t_philo *philo);
 void		release_forks(t_philo *philo, int nb);
 
 void		die_if_have_to(t_philo *philo, int nb_of_forks_in_hand);
