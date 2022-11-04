@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 14:59:10 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 20:15:38 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 20:18:32 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define ERR_UNKNOWN			"Unknown error"
 
 # define SEM_FORKS_NAME			"/forks"
-# define SEM_FORKS_NAME			"/forks"
+# define SEM_PRINT_NAME			"/print"
 
 # define ACT_IS_BORN			"is born"
 # define ACT_TAKE_FORK			"has taken a fork"
@@ -79,12 +79,12 @@ size_t		ft_strlen(char *str);
 int			launch_philo_processes(t_exec_data *exec_data);
 void		monitoring(t_exec_data *exec_data);
 
-int			eat_action(t_philo *philo);
+void		eat_action(t_philo *philo);
 void		release_forks(t_philo *philo, int nb);
 
-int			sleep_action(t_philo *philo);
+void		sleep_action(t_philo *philo);
 
-int			think_action(t_philo *philo);
+void		think_action(t_philo *philo);
 
 void		die_if_have_to(t_philo *philo, int nb_of_forks_in_hand);
 
