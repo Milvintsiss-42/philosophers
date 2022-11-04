@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 14:59:10 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 17:50:43 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 18:12:22 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ typedef struct s_philo
 
 int			ft_perror(t_exec_data *exec_data, char *str, int err);
 int			ft_exit(t_exec_data *exec_data);
-
 long		gettimestamp(t_exec_data exec_data);
 void		log_action(t_philo philo, char *action);
 
@@ -81,5 +80,8 @@ int			launch_philo_processes(t_exec_data *exec_data);
 void		monitoring(t_exec_data *exec_data);
 
 int			eat(t_philo *philo);
+void		release_forks(t_philo *philo, int nb);
+
+void		die_if_have_to(t_philo *philo, int nb_of_forks_in_hand);
 
 #endif
