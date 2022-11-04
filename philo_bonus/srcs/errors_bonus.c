@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:23:34 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 12:19:08 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 20:56:42 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ int	ft_perror(t_exec_data *exec_data, char *str, int err)
 	return (0);
 }
 
-int	ft_exit(t_exec_data *exec_data)
+int	ft_exit(t_exec_data *exec_data, int from_child)
 {
 	free(exec_data->philos);
-	if (exec_data->forks != 0)
+	if (!from_child && exec_data->forks != 0)
+	{
 		if (sem_close(exec_data->forks) == -1
 			|| sem_unlink(SEM_FORKS_NAME) == -1)
 			exec_data->err_no = 99;
+	}
 	return (exec_data->err_no);
 }

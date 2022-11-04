@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:24:03 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 20:21:08 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 20:53:13 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	philo_proccess(t_philo *philo)
 	while (1)
 	{
 		if (philo->nb_of_dinners_eat == philo->exec_data->nb_of_dinners)
-			return (0);
+			exit(ft_exit(philo->exec_data, 1));
 		eat_action(philo);
 		sleep_action(philo);
 		think_action(philo);

@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 11:55:24 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 17:49:40 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 20:54:48 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	monitoring(t_exec_data *exec_data)
 	if (exited_process_pid == -1)
 	{
 		ft_perror(exec_data, ERR_UNKNOWN, 9);
-		exit(ft_exit(exec_data));
+		exit(ft_exit(exec_data, 1));
 	}
 	get_philo_by_pid(exited_process_pid, exec_data)->have_exited = 1;
 	if (WEXITSTATUS(wstatus) == 0 && !do_all_philos_have_exited(exec_data))

@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:57:44 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 18:13:06 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 20:41:41 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	die_if_have_to(t_philo *philo, int nb_of_forks_in_hand)
 		log_action(*philo, ACT_DIED);
 		philo->exec_data->err_no = 1;
 		release_forks(philo, nb_of_forks_in_hand);
-		exit(ft_exit(philo->exec_data));
+		exit(ft_exit(philo->exec_data, 1));
 	}
 }

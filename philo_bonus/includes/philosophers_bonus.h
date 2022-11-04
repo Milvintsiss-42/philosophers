@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 14:59:10 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 20:18:32 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 20:41:27 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef struct s_philo
 }	t_philo;
 
 int			ft_perror(t_exec_data *exec_data, char *str, int err);
-int			ft_exit(t_exec_data *exec_data);
+int			ft_exit(t_exec_data *exec_data, int from_child);
 long		gettimestamp(t_exec_data exec_data);
 void		log_action(t_philo philo, char *action);
 

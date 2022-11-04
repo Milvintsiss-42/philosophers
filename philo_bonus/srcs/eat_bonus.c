@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:25:06 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 20:17:52 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 20:42:01 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	release_forks(t_philo *philo, int nb)
 void	eat_action(t_philo *philo)
 {
 	if (!take_fork(philo))
-		exit(ft_exit(philo->exec_data));
+		exit(ft_exit(philo->exec_data, 1));
 	die_if_have_to(philo, 1);
 	if (!take_fork(philo))
 	{
 		release_forks(philo, 1);
-		exit(ft_exit(philo->exec_data));
+		exit(ft_exit(philo->exec_data, 1));
 	}
 	die_if_have_to(philo, 2);
 	philo->t_last_meal = gettimestamp(*philo->exec_data);
