@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 13:44:19 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/09/23 22:39:54 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 23:15:54 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,22 @@ static void	parse_input(t_exec_data *exec_data, int argc, char const **argv)
 		exec_data->nb_of_dinners = INTMAX;
 }
 
+static int	check_timings(t_exec_data *exec_data)
+{
+	int	valid;
+
+	exec_data->t_to_die *= 1000;
+	exec_data->t_to_eat *= 1000;
+	exec_data->t_to_sleep *= 1000;
+	valid = (exec_data->t_to_die < 0
+			|| exec_data->t_to_eat < 0
+			|| exec_data->t_to_sleep < 0);
+	exec_data->t_to_die /= 1000;
+	exec_data->t_to_eat /= 1000;
+	exec_data->t_to_sleep /= 1000;
+	return (valid);
+}
+
 static int	init_exec_data(t_exec_data *exec_data, int argc, char const **argv)
 {
 	exec_data->err_no = 0;
@@ -33,8 +49,7 @@ static int	init_exec_data(t_exec_data *exec_data, int argc, char const **argv)
 	if (argc < 5 || argc > 6)
 		return (ft_perror(exec_data, ERR_WRG_NB_ARG, 2));
 	parse_input(exec_data, argc, argv);
-	if (exec_data->nb_philo <= 0 || exec_data->t_to_die * 1000 < 0
-		|| exec_data->t_to_eat * 1000 < 0 || exec_data->t_to_sleep * 1000 < 0
+	if (exec_data->nb_philo <= 0 || check_timings(exec_data)
 		|| exec_data->nb_of_dinners == -1)
 		return (ft_perror(exec_data, ERR_WRG_ARG, 3));
 	if (exec_data->t_to_die < exec_data->t_to_eat)
