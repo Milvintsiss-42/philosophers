@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 14:59:10 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/03 19:08:34 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 12:16:49 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <semaphore.h>
+# include <signal.h>
 
 # ifndef KDEBUG
 #  define KDEBUG 0
@@ -77,6 +78,7 @@ size_t		ft_strlen(char *str);
 
 int			launch_philo_processes(t_exec_data *exec_data);
 int			wait_for_philo_processes(t_exec_data *exec_data);
+void		monitoring(t_exec_data *exec_data);
 
 int			eat(t_philo *philo);
 
