@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 14:59:10 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 19:53:21 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 20:15:38 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define ERR_UNKNOWN			"Unknown error"
 
 # define SEM_FORKS_NAME			"/forks"
+# define SEM_FORKS_NAME			"/forks"
 
 # define ACT_IS_BORN			"is born"
 # define ACT_TAKE_FORK			"has taken a fork"
@@ -51,7 +52,6 @@ typedef struct s_exec_data
 	int				t_to_die;
 	int				t_to_eat;
 	int				t_to_sleep;
-	int				t_to_think;
 	int				nb_of_dinners;
 	struct s_philo	*philos;
 	sem_t			*forks;
@@ -83,6 +83,8 @@ int			eat_action(t_philo *philo);
 void		release_forks(t_philo *philo, int nb);
 
 int			sleep_action(t_philo *philo);
+
+int			think_action(t_philo *philo);
 
 void		die_if_have_to(t_philo *philo, int nb_of_forks_in_hand);
 
