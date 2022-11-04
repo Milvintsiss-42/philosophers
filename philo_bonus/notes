@@ -1,0 +1,5 @@
+./philo 5 610 200 2147483647
+=> Ça wait a la fin
+
+./philo_bonus 3 410 200 200
+=> Il y a un philo qui invente une fourchette et personne ne meurt dans le monde des bisounours
