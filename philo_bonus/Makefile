@@ -6,7 +6,7 @@
 #    By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 15:36:23 by ple-stra          #+#    #+#              #
-#    Updated: 2022/11/04 18:10:08 by ple-stra         ###   ########.fr        #
+#    Updated: 2022/11/04 19:53:35 by ple-stra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS		= \
  $(addsuffix _bonus.c,\
  philosophers\
  processes monitoring\
- eat die\
+ eat sleep die\
  errors logs basic_utils\
  )
 BUILD_DIR	= build
