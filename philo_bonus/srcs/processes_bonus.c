@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:24:03 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 00:35:54 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 17:50:35 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	launch_philo_processes(t_exec_data *exec_data)
 		exec_data->philos[i].exec_data = exec_data;
 		exec_data->philos[i].nb_of_dinners_eat = 0;
 		exec_data->philos[i].t_last_meal = 0;
+		exec_data->philos[i].have_exited = 0;
 		pid = fork();
 		if (pid == -1)
 			return (ft_perror(exec_data, ERR_UNKNOWN, 5));
@@ -57,16 +58,5 @@ int	launch_philo_processes(t_exec_data *exec_data)
 		if (pid != 0)
 			exec_data->philos[i].pid = pid;
 	}
-	return (1);
-}
-
-int	wait_for_philo_processes(t_exec_data *exec_data)
-{
-	int	i;
-
-	i = -1;
-	while (++i < exec_data->nb_philo)
-		if (waitpid(exec_data->philos[i].pid, NULL, 0) == -1)
-			return (ft_perror(exec_data, ERR_UNKNOWN, 6));
 	return (1);
 }

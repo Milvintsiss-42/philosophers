@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 14:59:10 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 12:16:49 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 17:50:43 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_philo
 	int				pid;
 	long			t_last_meal;
 	int				nb_of_dinners_eat;
+	int				have_exited;
 	t_exec_data		*exec_data;
 }	t_philo;
 
@@ -77,7 +78,6 @@ int			get_input(const char *str);
 size_t		ft_strlen(char *str);
 
 int			launch_philo_processes(t_exec_data *exec_data);
-int			wait_for_philo_processes(t_exec_data *exec_data);
 void		monitoring(t_exec_data *exec_data);
 
 int			eat(t_philo *philo);

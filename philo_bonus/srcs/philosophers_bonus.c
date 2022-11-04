@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 13:47:36 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 12:18:30 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 17:50:54 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,5 @@ int	main(int argc, char const **argv)
 	if (!launch_philo_processes(&exec_data))
 		return (ft_exit(&exec_data));
 	monitoring(&exec_data);
-	if (!wait_for_philo_processes(&exec_data))
-		return (ft_exit(&exec_data));
 	return (ft_exit(&exec_data));
 }
