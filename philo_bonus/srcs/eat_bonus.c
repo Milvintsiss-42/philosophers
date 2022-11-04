@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:25:06 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 20:42:01 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 21:17:49 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,21 @@ void	release_forks(t_philo *philo, int nb)
 		sem_post(philo->exec_data->forks);
 }
 
+void	philo_is_alone_sniff(t_philo *philo)
+{
+	while (1)
+	{
+		die_if_have_to(philo, 1);
+	}
+}
+
 void	eat_action(t_philo *philo)
 {
 	if (!take_fork(philo))
 		exit(ft_exit(philo->exec_data, 1));
 	die_if_have_to(philo, 1);
+	if (philo->exec_data->nb_philo == 1)
+		philo_is_alone_sniff(philo);
 	if (!take_fork(philo))
 	{
 		release_forks(philo, 1);
