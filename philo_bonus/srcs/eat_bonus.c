@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:25:06 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/11/04 21:17:49 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/11/04 22:16:15 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,4 @@ void	eat_action(t_philo *philo)
 	usleep(philo->exec_data->t_to_eat * 1000);
 	die_if_have_to(philo, 2);
 	philo->nb_of_dinners_eat++;
-	release_forks(philo, 2);
 }
