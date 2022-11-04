@@ -17,7 +17,6 @@ void	die_if_have_to(t_philo *philo, int nb_of_forks_in_hand)
 	if (gettimestamp(*philo->exec_data) - philo->t_last_meal
 		> philo->exec_data->t_to_die)
 	{
-		log_action(*philo, ACT_DIED);
 		philo->exec_data->err_no = 1;
 		release_forks(philo, nb_of_forks_in_hand);
 		exit(ft_exit(philo->exec_data, 1));

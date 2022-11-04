@@ -50,6 +50,7 @@ static void	kill_all_philosophers(t_exec_data *exec_data)
 
 void	monitoring(t_exec_data *exec_data)
 {
+	t_philo	*philo_stopped;
 	pid_t	exited_process_pid;
 	int		wstatus;
 
@@ -59,9 +60,15 @@ void	monitoring(t_exec_data *exec_data)
 		ft_perror(exec_data, ERR_UNKNOWN, 9);
 		exit(ft_exit(exec_data, 1));
 	}
-	get_philo_by_pid(exited_process_pid, exec_data)->have_exited = 1;
+	philo_stopped = get_philo_by_pid(exited_process_pid, exec_data);
+	philo_stopped->have_exited = 1;
 	if (WEXITSTATUS(wstatus) == 0 && !do_all_philos_have_exited(exec_data))
+	{
 		monitoring(exec_data);
+	}
 	else if (WEXITSTATUS(wstatus) != 0)
+	{
 		kill_all_philosophers(exec_data);
+		log_action(*philo_stopped, ACT_DIED);
+	}
 }
